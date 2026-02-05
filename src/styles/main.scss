@@ -1,26 +1,7 @@
+@use './mixins' as *;
+@use './variables' as *;
+
 @import './normalize.css';
-
-// variables 
-$color-dark-blue: #0F152B;
-$color-white: #FFFFFF;
-$color-orange: #FF8500;
-
-//mixins
-@mixin centering {
-    margin-left: auto;
-    margin-right: auto;
-}
-
-@mixin reset-button {
-    background: none;
-    border: none;
-}
-
-@mixin reset-list {
-    list-style-type: none;
-    padding-left: 0;
-}
-
 
 
 * {
@@ -36,6 +17,7 @@ $color-orange: #FF8500;
 
         p,
         h1,
+        h2,
         button {
             font-family: sans-serif;
         }
@@ -81,13 +63,204 @@ $color-orange: #FF8500;
         }
 
         .winners-section {
+            padding-top: 16px;
+
             .winners-list {
                 @include reset-list();
+                display: flex;
+                overflow-x: hidden;
+                white-space: nowrap;
+                overflow: hidden;
+                cursor: grab;
+                user-select: none;
+                gap: 8px;
+                margin: 0;
+
+
 
                 .winners-list-item {
+                    background-color: $color-grey;
+                    width: fit-content;
+                    padding: 8px;
+                    border-radius: 16px;
+                    display: flex;
+                    align-items: center;
+                    user-select: none;
+
+
+                    .winner-img {
+                        width: 68px;
+                        height: 48px;
+                    }
+
                     .winner-info {
+                        padding-left: 4px;
+
                         .game-name {
                             color: $color-orange;
+                            font-size: 14px;
+                            @include reset-margin-and-padding;
+                            margin-bottom: 3px;
+
+                        }
+
+                        .prize-sum {
+                            color: #289211;
+                            font-size: 14px;
+                            @include reset-margin-and-padding;
+                            margin-bottom: 3px;
+
+
+                        }
+
+                        .winner-name {
+                            color: $color-white;
+                            font-size: 12px;
+                            @include reset-margin-and-padding
+                        }
+                    }
+                }
+            }
+        }
+
+        .resent-games-section {
+            padding-top: 16px;
+
+            .resent-games-container {
+                .resent-games-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .resent-games-btns {
+
+                        .resent-btn,
+                        .favorite-btn {
+                            @include reset-button;
+                            @include subtitle;
+                            padding: 14px 27px;
+
+
+
+                        }
+
+                        .active {
+                            border: 1px solid $color-orange;
+                            border-radius: 12px;
+                        }
+                    }
+
+                    .resent-games-nav {
+                        display: flex;
+                        gap: 8px;
+
+                        .before-btn,
+                        .next-btn,
+                        .showAll-btn {
+                            @include reset-button;
+                            @include nav-btns
+                        }
+
+                    }
+                }
+
+                .resent-games-list {
+                    @include reset-list;
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+
+                    .resent-games-list-item {
+                        padding-bottom: 20px;
+
+                        .game-banner {
+                            position: relative;
+
+                            img {
+                                width: 272px;
+                                height: 188px;
+
+
+                            }
+
+                            .game-btns {
+
+                                display: none;
+                                flex-direction: column;
+                                width: fit-content;
+                                gap: 10px;
+                                position: absolute;
+                                top: 63px;
+                                left: 70px;
+
+                                .play {
+                                    @include reset-button;
+                                    color: $color-white;
+                                    background-color: $color-orange;
+                                    padding: 16px 48px;
+                                    border-radius: 16px
+                                }
+
+                                .demo {
+                                    @include reset-button;
+                                    color: $color-white;
+                                    padding: 16px 48px;
+
+
+                                }
+                            }
+
+                            &:hover {
+                                .game-btns {
+                                    display: flex;
+                                }
+
+                                img {
+                                    background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+
+                                }
+                            }
+                        }
+
+                        .game-name {
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                            padding-left: 8px;
+                            padding-top: 6px;
+
+                            p {
+                                @include reset-margin-and-padding;
+                                font-size: 14px;
+                                color: #9FA1AA;
+                                font-weight: bold;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .top-games-section {
+            .top-games-container {
+                .top-games-header {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    h2 {
+                        @include subtitle;
+
+                    }
+
+                    .top-games-nav {
+                        display: flex;
+                        gap: 8px;
+
+                        .top-before-btn,
+                        .top-next-btn,
+                        .top-showAll-btn {
+                            @include nav-btns;
                         }
                     }
                 }

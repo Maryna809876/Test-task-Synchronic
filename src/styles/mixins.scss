@@ -1,0 +1,35 @@
+@use './variables' as *;
+
+@mixin centering {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@mixin reset-button {
+    background: none;
+    border: none;
+}
+
+@mixin reset-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+@mixin reset-margin-and-padding {
+    margin: 0;
+    padding: 0;
+}
+
+@mixin subtitle {
+    color: $color-white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+@mixin nav-btns {
+    background-color: $color-grey;
+    padding: 6px 10px 6px 10px;
+    border: none;
+    border-radius: 8px;
+    color: $color-white
+}
