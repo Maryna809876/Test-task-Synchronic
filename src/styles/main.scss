@@ -13,6 +13,7 @@
     }
 
     body {
+
         background-color: $color-dark-blue;
 
         p,
@@ -35,29 +36,48 @@
 
         .hero-section {
             background-color: #8CA2F5;
-
+            // padding-bottom: 34px;
 
             .hero-container {
                 display: flex;
                 justify-content: center;
+                align-items: center;
 
                 .hero-title {
                     color: $color-white;
-                    font-size: 45px;
+                    font-size: 55px;
                     max-width: 545px;
+                    @include reset-margin-and-padding;
+                    padding-top: 50px;
+                    line-height: 1;
+                    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
                 }
 
                 .hero-subtitle {
                     color: $color-white;
-
+                    font-size: 35px;
+                    @include reset-margin-and-padding;
+                    padding-top: 16px;
+                    padding-bottom: 15px;
                 }
 
                 .hero-btn {
                     @include reset-button();
+                    transition: all 0.5s ease-in-out;
                     color: $color-white;
+                    font-weight: bold;
                     padding: 15px 75px;
                     border: 3px solid $color-white;
                     border-radius: 20px;
+                    box-shadow:
+                        -1px -1px 2px rgba(252, 252, 252, 0.788),
+                        4px 4px 10px rgba(0, 0, 0, 0.35);
+
+                    &:hover {
+                        background-color: $color-white;
+                        color: $color-dark-blue;
+                    }
+
                 }
             }
         }
@@ -139,6 +159,14 @@
                             @include reset-button;
                             @include subtitle;
                             padding: 14px 27px;
+                            transition: all 0.5s ease-in-out;
+                            border: 0.5px solid transparent;
+                            border-radius: 12px;
+
+                            &:hover {
+                                border: 0.5px solid rgb(209, 188, 148);
+
+                            }
 
 
 
@@ -158,7 +186,12 @@
                         .next-btn,
                         .showAll-btn {
                             @include reset-button;
-                            @include nav-btns
+                            @include nav-btns;
+                            transition: all 0.5s ease-in-out;
+
+                            &:hover {
+                                background-color: gray
+                            }
                         }
 
                     }
@@ -175,17 +208,25 @@
 
                         .game-banner {
                             position: relative;
+                            transition: all 0.5s ease-in-out;
+
+
+                            .img-wrapper::before {
+                                @include image-wrapper;
+
+                            }
 
                             img {
                                 width: 272px;
                                 height: 188px;
-
+                                display: block;
 
                             }
 
                             .game-btns {
 
-                                display: none;
+                                opacity: 0;
+                                display: flex;
                                 flex-direction: column;
                                 width: fit-content;
                                 gap: 10px;
@@ -193,18 +234,22 @@
                                 top: 63px;
                                 left: 70px;
 
+
+
                                 .play {
-                                    @include reset-button;
-                                    color: $color-white;
-                                    background-color: $color-orange;
-                                    padding: 16px 48px;
-                                    border-radius: 16px
+                                    @include play-btn;
+                                    transition: all 0.5s ease-in-out;
+
+                                    &:hover {
+                                        background-color: rgb(255, 255, 255);
+                                        color: $color-dark-blue
+                                    }
+
                                 }
 
                                 .demo {
-                                    @include reset-button;
-                                    color: $color-white;
-                                    padding: 16px 48px;
+                                    @include demo-btn;
+                                    transition: all 0.5s ease-in-out;
 
 
                                 }
@@ -212,13 +257,13 @@
 
                             &:hover {
                                 .game-btns {
-                                    display: flex;
+                                    opacity: 1;
                                 }
 
-                                img {
-                                    background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
-
+                                .img-wrapper::before {
+                                    opacity: 1;
                                 }
+
                             }
                         }
 
@@ -261,8 +306,100 @@
                         .top-next-btn,
                         .top-showAll-btn {
                             @include nav-btns;
+                            transition: all 0.5s ease-in-out;
+
+                            &:hover {
+                                background-color: gray
+                            }
                         }
                     }
+                }
+
+                .top-games-list {
+                    display: flex;
+                    justify-content: space-between;
+                    @include reset-list;
+                    flex-wrap: wrap;
+
+                    .top-games-list-item {
+                        padding-bottom: 20px;
+
+                        .top-game-banner {
+                            position: relative;
+
+                            .top-img-wrapper::before {
+                                @include image-wrapper;
+
+                            }
+
+
+
+
+                            img {
+                                width: 272px;
+                                height: 188px;
+                                display: block;
+                            }
+
+                            .top-game-btns {
+                                opacity: 0;
+                                display: flex;
+
+
+                                flex-direction: column;
+                                width: fit-content;
+                                gap: 10px;
+                                position: absolute;
+                                top: 63px;
+                                left: 70px;
+                                transition: all 0.5s ease-in-out;
+
+                                .top-play {
+                                    @include play-btn;
+                                    transition: all 0.5s ease-in-out;
+
+                                    &:hover {
+                                        background-color: rgb(255, 255, 255);
+                                        color: $color-dark-blue
+                                    }
+                                }
+                            }
+
+                            .top-demo {
+                                @include demo-btn;
+                            }
+
+                            &:hover {
+                                .top-game-btns {
+                                    opacity: 1;
+
+                                }
+
+                                .top-img-wrapper::before {
+                                    opacity: 1;
+                                }
+
+                            }
+                        }
+
+                        .top-game-name {
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                            padding-left: 8px;
+                            padding-top: 6px;
+
+                            p {
+                                @include reset-margin-and-padding;
+                                font-size: 14px;
+                                color: #9FA1AA;
+                                font-weight: bold;
+                            }
+                        }
+
+
+                    }
+
                 }
             }
         }
