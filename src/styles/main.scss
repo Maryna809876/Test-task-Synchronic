@@ -1,0 +1,97 @@
+@import './normalize.css';
+
+// variables 
+$color-dark-blue: #0F152B;
+$color-white: #FFFFFF;
+$color-orange: #FF8500;
+
+//mixins
+@mixin centering {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@mixin reset-button {
+    background: none;
+    border: none;
+}
+
+@mixin reset-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+
+
+* {
+    box-sizing: border-box;
+
+    .container {
+        max-width: 1390px;
+        @include centering()
+    }
+
+    body {
+        background-color: $color-dark-blue;
+
+        p,
+        h1,
+        button {
+            font-family: sans-serif;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+
+            .search-btn {
+                @include reset-button();
+            }
+        }
+
+        .hero-section {
+            background-color: #8CA2F5;
+
+
+            .hero-container {
+                display: flex;
+                justify-content: center;
+
+                .hero-title {
+                    color: $color-white;
+                    font-size: 45px;
+                    max-width: 545px;
+                }
+
+                .hero-subtitle {
+                    color: $color-white;
+
+                }
+
+                .hero-btn {
+                    @include reset-button();
+                    color: $color-white;
+                    padding: 15px 75px;
+                    border: 3px solid $color-white;
+                    border-radius: 20px;
+                }
+            }
+        }
+
+        .winners-section {
+            .winners-list {
+                @include reset-list();
+
+                .winners-list-item {
+                    .winner-info {
+                        .game-name {
+                            color: $color-orange;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
