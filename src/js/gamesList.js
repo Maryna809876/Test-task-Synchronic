@@ -130,6 +130,7 @@ const recentBtn = document.querySelector('.resent-btn');
 const favoriteBtn = document.querySelector('.favorite-btn');
 const showAllBtn = document.querySelector('.showAll-btn');
 
+
 function renderGames() {
     gameList.innerHTML = '';
 
@@ -138,8 +139,10 @@ function renderGames() {
     if (showAllBtn.classList.contains('active')) {
         visibleGames = currentGames;
     } else {
+
         visibleGames = currentGames.slice(currentIndex, currentIndex + itemsPerView);
     }
+
 
     visibleGames.forEach(game => {
         const card = createGameCard(game);
@@ -162,7 +165,7 @@ nextBtn.addEventListener('click', () => {
 });
 
 recentBtn.addEventListener('click', () => {
-    recentBtn.classList.add('active');
+    recentBtn.classList.toggle('active');
     favoriteBtn.classList.remove('active');
     showAllBtn.classList.remove('active');
 

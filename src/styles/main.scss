@@ -50,7 +50,7 @@
                     padding-left: 15px;
                     min-width: 208px;
 
-                    @media (max-width: 768px) {
+                    @media (max-width: 800px) {
                         width: 400px;
                     }
 
@@ -64,7 +64,7 @@
                         line-height: 1;
                         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 
-                        @media (max-width: 768px) {
+                        @media (max-width: 800px) {
                             font-size: 30px;
                         }
                     }
@@ -76,7 +76,7 @@
                         padding-top: 16px;
                         padding-bottom: 15px;
 
-                        @media (max-width: 768px) {
+                        @media (max-width: 800px) {
                             font-size: 20px;
                         }
                     }
@@ -98,7 +98,7 @@
                             color: $color-dark-blue;
                         }
 
-                        @media (max-width: 768px) {
+                        @media (max-width: 800px) {
                             padding: 10px 55px;
                         }
 
@@ -127,7 +127,7 @@
                 user-select: none;
                 gap: 8px;
                 margin: 0;
-                overflow-x: auto;
+                // overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
                 scroll-snap-type: x mandatory;
 
@@ -240,15 +240,20 @@
 
                 .resent-games-list {
                     @include reset-list;
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: space-between;
+                    display: grid;
+                    grid-template-columns: repeat(5, 1fr);
+                    grid-template-rows: auto;
+                    gap: 8px;
                     overflow: hidden;
+                    // / display: flex;
+                    // flex-wrap: wrap;
+                    // justify-content: space-between;
+                    // overflow: hidden;
 
-                    @media (max-width: 1360px) {
+                    @media (max-width: 800px) {
 
-                        flex-wrap: nowrap;
-                        justify-content: stretch;
+                        // flex-wrap: nowrap;
+                        // justify-content: stretch;
                     }
 
 
@@ -256,6 +261,8 @@
                         padding-bottom: 20px;
                         max-width: 50%
                     }
+
+
                 }
             }
         }
@@ -288,10 +295,13 @@
                 }
 
                 .top-games-list {
-                    display: flex;
-                    justify-content: space-between;
+
                     @include reset-list;
-                    flex-wrap: wrap;
+                    display: grid;
+                    grid-template-columns: repeat(5, 1fr);
+                    grid-template-rows: auto;
+                    gap: 8px;
+                    overflow: hidden;
 
                     .top-games-list-item {
                         padding-bottom: 20px;
