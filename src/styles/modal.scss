@@ -1,68 +1,150 @@
 @use './mixins.scss' as *;
 @use './variables.scss' as *;
 
+.modal {
+    width: 100vw;
+    height: 100vh;
+    display: none;
 
-.modal-window {
-    max-width: 800px;
-    @include centering;
-    border-radius: 16px;
-
-    .modal-header {
-        background-color: $color-light-grey;
-        position: relative;
-        padding: 16px;
-
-        h2 {
-            display: block;
-            width: fit-content;
-            color: $color-white;
-            font-size: 20px;
-            font-weight: bold;
-
-            @include reset-margin-and-padding;
-            @include centering;
-
-        }
-
-        .close-modal {
-            @include reset-button;
-            position: absolute;
-            top: 19px;
-            right: 16px;
-        }
+    &.active {
+        display: flex;
     }
 
-    .modal-body {
-        padding-top: 24px;
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        z-index: 9999;
 
-        .modal-subtitle {
-            display: block;
-            @include reset-margin-and-padding;
-            @include centering;
-            width: fit-content;
-            font-size: 16px;
-            color: $color-white;
-            font-weight: bold;
-        }
+        .modal-window {
+            max-width: 900px;
+            border-radius: 16px;
+            margin-top: 70px;
+            background-color: $color-dark-blue;
+            overflow: hidden;
+            max-height: 1160px;
+            display: flex;
+            flex-direction: column;
 
-        .input-label {
-            font-size: 15px;
-            color: $color-white;
-            font-family: sans-serif;
-        }
+            .modal-header {
+                background-color: $color-light-grey;
+                position: relative;
+                padding: 16px;
+                width: 100%;
+                border-top-left-radius: 16px;
+                border-top-right-radius: 16px;
 
-        .input-wrapper {
-            color: $color-light-grey;
+                h2 {
+                    display: block;
+                    width: fit-content;
+                    color: $color-white;
+                    font-size: 20px;
+                    font-weight: bold;
 
-            input {}
+                    @include reset-margin-and-padding;
+                    @include centering;
 
-            .search-close-btn {}
-        }
+                }
 
-        .modal-games-wrapper {
-            .modal-games-title {}
+                .close-modal {
+                    @include reset-button;
+                    position: absolute;
+                    top: 19px;
+                    right: 16px;
+                }
+            }
 
-            .modal-games-list {}
+            .modal-body {
+                padding: 24px;
+                overflow-y: scroll;
+                scroll-behavior: smooth;
+
+                &::-webkit-scrollbar {
+                    width: 0px;
+                    background: transparent;
+                }
+
+                .modal-subtitle {
+                    display: block;
+                    @include reset-margin-and-padding;
+                    @include centering;
+                    width: fit-content;
+                    font-size: 16px;
+                    color: $color-white;
+                    font-weight: bold;
+                    padding-bottom: 11px;
+                }
+
+                .input-label {
+                    font-size: 15px;
+                    color: $color-white;
+                    font-family: sans-serif;
+                    padding-left: 8px;
+                }
+
+                .input-wrapper {
+                    background-color: $color-light-grey;
+                    border-radius: 12px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 14px 16px;
+
+                    .search-wrapper {
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                        width: 100%;
+
+                        input {
+                            background-color: transparent;
+                            border: none;
+                            width: 100%;
+
+
+                            &::placeholder {
+                                font-size: 14px;
+                                color: #9FA1AA;
+                            }
+
+                            &:focus {
+                                outline: none;
+                            }
+                        }
+                    }
+
+
+                    .search-close-btn {
+                        @include reset-button;
+                        margin-top: 5px;
+                    }
+                }
+
+                .modal-games-wrapper {
+                    .modal-games-title {
+                        @include subtitle
+                    }
+
+                    .modal-games-list {
+                        @include reset-list;
+                        display: grid;
+                        grid-template-columns: repeat(3, 1fr);
+                        gap: 8px;
+
+                        .games-list-item {
+
+
+                            .game-banner {}
+                        }
+
+
+                    }
+                }
+            }
         }
     }
 }
