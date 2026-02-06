@@ -5,6 +5,12 @@
     margin-right: auto;
 }
 
+@mixin flex-space-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 @mixin reset-button {
     background: none;
     border: none;

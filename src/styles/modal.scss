@@ -1,0 +1,68 @@
+@use './mixins.scss' as *;
+@use './variables.scss' as *;
+
+
+.modal-window {
+    max-width: 800px;
+    @include centering;
+    border-radius: 16px;
+
+    .modal-header {
+        background-color: $color-light-grey;
+        position: relative;
+        padding: 16px;
+
+        h2 {
+            display: block;
+            width: fit-content;
+            color: $color-white;
+            font-size: 20px;
+            font-weight: bold;
+
+            @include reset-margin-and-padding;
+            @include centering;
+
+        }
+
+        .close-modal {
+            @include reset-button;
+            position: absolute;
+            top: 19px;
+            right: 16px;
+        }
+    }
+
+    .modal-body {
+        padding-top: 24px;
+
+        .modal-subtitle {
+            display: block;
+            @include reset-margin-and-padding;
+            @include centering;
+            width: fit-content;
+            font-size: 16px;
+            color: $color-white;
+            font-weight: bold;
+        }
+
+        .input-label {
+            font-size: 15px;
+            color: $color-white;
+            font-family: sans-serif;
+        }
+
+        .input-wrapper {
+            color: $color-light-grey;
+
+            input {}
+
+            .search-close-btn {}
+        }
+
+        .modal-games-wrapper {
+            .modal-games-title {}
+
+            .modal-games-list {}
+        }
+    }
+}

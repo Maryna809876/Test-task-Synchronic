@@ -1,7 +1,7 @@
 @use './mixins' as *;
 @use './variables' as *;
-
-@import './normalize.css';
+@use './normalize.css' as *;
+@use './modal.scss' as *;
 
 
 * {
@@ -24,9 +24,7 @@
         }
 
         .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            @include flex-space-between;
             padding: 20px 24px;
 
             .search-btn {
@@ -148,9 +146,7 @@
 
             .resent-games-container {
                 .resent-games-header {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
+                    @include flex-space-between;
 
                     .resent-games-btns {
 
@@ -233,6 +229,8 @@
                                 position: absolute;
                                 top: 63px;
                                 left: 70px;
+                                transition: all 0.5s ease-in-out;
+
 
 
 
@@ -289,9 +287,7 @@
         .top-games-section {
             .top-games-container {
                 .top-games-header {
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
+                    @include flex-space-between;
 
                     h2 {
                         @include subtitle;
